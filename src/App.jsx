@@ -1,4 +1,4 @@
-import Button from 'antd';
+import { Button } from 'antd';
 
 export function App() {
   // const [data, setData] = useState();
