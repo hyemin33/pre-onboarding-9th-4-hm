@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import Button from 'antd';
 import getData from './apis/api';
 
 export function App() {
@@ -12,5 +13,9 @@ export function App() {
     });
   }, []);
 
-  return <div>스위치원</div>;
+  return (
+    <div>
+      스위치원<Button>antd 사용하고싶은사람</Button>
+    </div>
+  );
 }
