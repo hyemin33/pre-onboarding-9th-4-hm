@@ -5,7 +5,7 @@ import { Layout, Menu } from 'antd';
 import styled from 'styled-components';
 const { Content, Sider, Header } = Layout;
 
-const ServiceWrapper = ({ children }) => {
+const ServiceWrapper = ({ children }: any) => {
   const [isCollapsed, setIsCollapsed] = useState<boolean>(false);
 
   return (
