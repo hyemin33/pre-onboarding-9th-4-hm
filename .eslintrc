@@ -37,6 +37,12 @@
   ],
   "ignorePatterns": ["node_modules/**", "**/dist/**", "**/build/**"],
   "rules": {
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ],
     "@typescript-eslint/no-unused-vars": [
       "error",
       {
