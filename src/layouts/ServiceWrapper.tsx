@@ -32,7 +32,7 @@ const ServiceWrapper = ({ children }: any) => {
         style={{
           transition: 'all 0.2s',
           minHeight: '100vh',
-          backgroundColor: 'white',
+          backgroundColor: '#f8f8f8',
         }}
       >
         <Header
