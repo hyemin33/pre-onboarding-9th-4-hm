@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { MenuOutlined, UserOutlined } from '@ant-design/icons';
+import { MenuOutlined, UserOutlined, CloseOutlined } from '@ant-design/icons';
 import { Layout, Menu, Avatar, Row } from 'antd';
 import styled from 'styled-components';
 import { Routes } from '../routes/routes';
@@ -12,6 +12,16 @@ const { MAIN } = Colors;
 
 const ServiceWrapper = ({ children }: any) => {
   const [isCollapsed, setIsCollapsed] = useState<boolean>(false);
+
+  const onMenuClick = () => {
+    setIsCollapsed((prevState) => !prevState);
+  };
+
+  const MenuIcon = !isCollapsed ? (
+    <CloseOutlined style={{ fontSize: 20 }} onClick={onMenuClick} />
+  ) : (
+    <MenuOutlined style={{ fontSize: 20 }} onClick={onMenuClick} />
+  );
 
   return (
     <Layout>
@@ -50,10 +60,7 @@ const ServiceWrapper = ({ children }: any) => {
             style={{ height: '100%' }}
             align='middle'
           >
-            <MenuOutlined
-              style={{ fontSize: 20 }}
-              onClick={() => setIsCollapsed((prevState) => !prevState)}
-            />
+            {MenuIcon}
             <Avatar size={25} icon={<UserOutlined />} />
           </Row>
         </Header>
