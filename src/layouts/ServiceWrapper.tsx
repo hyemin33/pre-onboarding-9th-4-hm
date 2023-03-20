@@ -4,8 +4,11 @@ import { MenuOutlined, UserOutlined } from '@ant-design/icons';
 import { Layout, Menu, Avatar, Row } from 'antd';
 import styled from 'styled-components';
 import { Routes } from '../routes/routes';
+import { Colors } from '../config/Colors';
 
 const { Content, Sider, Header: AntdHeader } = Layout;
+
+const { MAIN } = Colors;
 
 const ServiceWrapper = ({ children }: any) => {
   const [isCollapsed, setIsCollapsed] = useState<boolean>(false);
@@ -19,17 +22,18 @@ const ServiceWrapper = ({ children }: any) => {
         style={{
           borderRight: '1px solid #dadada',
           background: 'white',
+          overflow: 'hidden',
         }}
       >
         <Logo
           src={isCollapsed ? '/logo-small.png' : '/logo.png'}
           alt='switchwon logo'
         />
-        <Menu mode='inline' selectedKeys={['/']}>
+        <Menu selectedKeys={['/']}>
           {Routes.map((route) => (
-            <Menu.Item key={route.path} icon={Object(route.sidebar).icon}>
+            <MenuItem key={route.path} icon={Object(route.sidebar).icon}>
               {Object(route.sidebar).label}
-            </Menu.Item>
+            </MenuItem>
           ))}
         </Menu>
       </Sider>
@@ -59,6 +63,15 @@ const ServiceWrapper = ({ children }: any) => {
   );
 };
 
+const MenuItem = styled(Menu.Item)`
+  font-weight: 700;
+  font-size: 15px;
+
+  &.ant-menu-item-selected {
+    color: ${MAIN};
+    background: #fff2e6;
+  }
+`;
 const Logo = styled.img`
   width: auto;
   height: 108px;

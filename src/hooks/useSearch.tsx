@@ -4,7 +4,9 @@ import Highlighter from 'react-highlight-words';
 import { SearchOutlined } from '@ant-design/icons';
 import { ColumnType, FilterConfirmProps } from 'antd/es/table/interface';
 import DataType from '../types/DataType';
+import { Colors } from '../config/Colors';
 
+const { MAIN } = Colors;
 type DataIndex = keyof DataType;
 const useSearch = (dataIndex: DataIndex) => {
   const [searchText, setSearchText] = useState('');
@@ -59,7 +61,7 @@ const useSearch = (dataIndex: DataIndex) => {
             }
             icon={<SearchOutlined />}
             size='small'
-            style={{ width: 90 }}
+            style={{ width: 90, backgroundColor: MAIN }}
           >
             검색
           </Button>
@@ -77,6 +79,7 @@ const useSearch = (dataIndex: DataIndex) => {
             onClick={() => {
               close();
             }}
+            style={{ color: MAIN }}
           >
             닫기
           </Button>
