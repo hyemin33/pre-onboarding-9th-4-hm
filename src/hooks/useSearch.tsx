@@ -23,10 +23,16 @@ const useSearch = (dataIndex: DataIndex) => {
     setSearchedColumn(dataIndex);
   };
 
-  const handleReset = (clearFilters: () => void) => {
+  const handleReset = (
+    clearFilters: () => void,
+    selectedKeys: string[],
+    confirm: (param?: FilterConfirmProps) => void,
+    dataIndex: DataIndex
+  ) => {
     clearFilters();
     setSearchText('');
-    // confirm({ closeDropdown: false });
+    confirm({ closeDropdown: false });
+    setSearchText((selectedKeys as string[])[0]);
     setSearchedColumn(dataIndex);
   };
 
@@ -66,13 +72,20 @@ const useSearch = (dataIndex: DataIndex) => {
             검색
           </Button>
           <Button
-            onClick={() => clearFilters && handleReset(clearFilters)}
+            onClick={() =>
+              clearFilters &&
+              handleReset(
+                clearFilters,
+                selectedKeys as string[],
+                confirm,
+                dataIndex
+              )
+            }
             size='small'
             style={{ width: 90 }}
           >
             초기화
           </Button>
-
           <Button
             type='link'
             size='small'
