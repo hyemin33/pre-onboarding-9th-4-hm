@@ -1,13 +1,11 @@
 import { useState } from 'react';
 
-import {
-  MenuOutlined,
-  ShoppingCartOutlined,
-  UserOutlined,
-} from '@ant-design/icons';
+import { MenuOutlined, UserOutlined } from '@ant-design/icons';
 import { Layout, Menu, Avatar, Row } from 'antd';
 import styled from 'styled-components';
-const { Content, Sider, Header } = Layout;
+import { Routes } from '../routes/routes';
+
+const { Content, Sider, Header: AntdHeader } = Layout;
 
 const ServiceWrapper = ({ children }: any) => {
   const [isCollapsed, setIsCollapsed] = useState<boolean>(false);
@@ -27,11 +25,12 @@ const ServiceWrapper = ({ children }: any) => {
           src={isCollapsed ? '/logo-small.png' : '/logo.png'}
           alt='switchwon logo'
         />
-        <Menu mode='inline'>
-          <Menu.Item key='menu'>
-            <ShoppingCartOutlined style={{ fontSize: 20 }} />
-            {!isCollapsed && <>주문 목록</>}
-          </Menu.Item>
+        <Menu mode='inline' selectedKeys={['/']}>
+          {Routes.map((route) => (
+            <Menu.Item key={route.path} icon={Object(route.sidebar).icon}>
+              {Object(route.sidebar).label}
+            </Menu.Item>
+          ))}
         </Menu>
       </Sider>
       <Layout
@@ -41,7 +40,7 @@ const ServiceWrapper = ({ children }: any) => {
           backgroundColor: '#f8f8f8',
         }}
       >
-        <HeaderBox>
+        <Header>
           <Row
             justify='space-between'
             style={{ height: '100%' }}
@@ -53,7 +52,7 @@ const ServiceWrapper = ({ children }: any) => {
             />
             <Avatar size={25} icon={<UserOutlined />} />
           </Row>
-        </HeaderBox>
+        </Header>
         <Content style={{ margin: '24px 16px 0' }}>{children}</Content>
       </Layout>
     </Layout>
@@ -66,7 +65,7 @@ const Logo = styled.img`
   padding: 40px 32px;
 `;
 
-const HeaderBox = styled(Header)`
+const Header = styled(AntdHeader)`
   padding: 0px 15px;
   background-color: white;
   box-shadow: 0 2px 8px #eee;
