@@ -1,7 +1,7 @@
 import type { ColumnsType } from 'antd/es/table/interface';
 import { Badge, Tag, Space } from 'antd';
-import DataType from '../../types/DataType';
-import useSearch from '../../hooks/useSearch';
+import DataType from '../types/DataType';
+import useSearch from '../hooks/useSearch';
 
 const ProductTableColumns = () => {
   const columns: ColumnsType<DataType> = [
