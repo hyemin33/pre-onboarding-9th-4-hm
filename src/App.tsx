@@ -14,7 +14,7 @@ export function App() {
 
   // 데이터 불러오기 + 필터링 임시로..
   useEffect(() => {
-    let result: object[] = [];
+    let result: any = [];
     if (mockData) {
       result = mockData.filter(
         (data) => data.transaction_time.split(' ')[0] === TODAY

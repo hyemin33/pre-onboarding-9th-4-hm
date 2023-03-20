@@ -18,7 +18,8 @@ const ProductTableColumns = () => {
       key: 'transaction_time',
       width: 200,
       sorter: (a, b) =>
-        new Date(a.transaction_time) - new Date(b.transaction_time),
+        new Date(a.transaction_time).getTime() -
+        new Date(b.transaction_time).getTime(),
     },
     {
       title: '주문처리상태',
