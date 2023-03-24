@@ -1,5 +1,5 @@
 import type { ColumnsType } from 'antd/es/table/interface';
-import { Badge, Tag, Space } from 'antd';
+import { Tag, Space } from 'antd';
 import DataType from '../types/DataType';
 import useSearch from '../hooks/useSearch';
 
@@ -28,10 +28,6 @@ const ProductTableColumns = () => {
       width: 200,
       render: (status: boolean) => (
         <Space size='middle'>
-          <Badge
-            status={status ? 'success' : 'error'}
-            text={status ? '완료' : '미완료'}
-          />
           <Tag color={status ? 'success' : 'error'}>
             {status ? '완료' : '미완료'}
           </Tag>
