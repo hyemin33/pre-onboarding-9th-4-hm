@@ -32,7 +32,7 @@ const useSearch = (dataIndex: DataIndex) => {
     clearFilters();
     setSearchText('');
     confirm({ closeDropdown: false });
-    setSearchText((selectedKeys as string[])[0]);
+    setSearchText('');
     setSearchedColumn(dataIndex);
   };
 
